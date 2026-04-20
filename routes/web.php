@@ -20,4 +20,9 @@ Route::middleware('auth')->group(function () {
 
     // Routing untuk manajemen pendaftaran laporan pengaduan
     Route::resource('pengaduan', PengaduanController::class);
+    
+    // Routing untuk Admin
+    Route::prefix('admin')->name('admin.')->group(function () {
+        Route::resource('pengaduan', App\Http\Controllers\Admin\PengaduanController::class)->only(['index', 'show', 'update']);
+    });
 });

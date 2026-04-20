@@ -131,6 +131,24 @@
             </div>
             @endif
 
+            <!-- Menu Cards for Admin/Petugas -->
+            @if(Auth::user()->role === 'admin' || Auth::user()->role === 'petugas')
+            <div class="md:col-span-3 grid gap-6 sm:grid-cols-2">
+                <!-- Menu Kelola Laporan -->
+                <a href="{{ route('admin.pengaduan.index') }}" class="group relative rounded-2xl border border-[#e4ebf5] bg-white p-6 shadow-sm hover:shadow-md transition-all sm:p-8 flex items-center gap-5 overflow-hidden">
+                    <div class="absolute inset-y-0 left-0 w-1 bg-emerald-500 rounded-l-2xl"></div>
+                    <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-emerald-500 text-white group-hover:scale-105 transition-transform shrink-0">
+                        <span class="material-symbols-rounded text-[30px]">admin_panel_settings</span>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-bold text-lg text-slate-900 group-hover:text-emerald-600 transition-colors">Kelola Laporan</h3>
+                        <p class="text-sm text-slate-500 mt-1">Verifikasi, tanggapi, dan kelola semua pengaduan siswa.</p>
+                    </div>
+                    <span class="material-symbols-rounded text-slate-300 group-hover:text-emerald-500 transition-colors">chevron_right</span>
+                </a>
+            </div>
+            @endif
+
         </div>
     </main>
 </div>
