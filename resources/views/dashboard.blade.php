@@ -100,6 +100,37 @@
                 </div>
             </div>
 
+            <!-- Menu Cards for Siswa -->
+            @if(Auth::user()->role === 'siswa')
+            <div class="md:col-span-3 grid gap-6 sm:grid-cols-2">
+                <!-- Menu Buat Laporan -->
+                <a href="{{ route('pengaduan.create') }}" class="group relative rounded-2xl border border-[#e4ebf5] bg-white p-6 shadow-sm hover:shadow-md transition-all sm:p-8 flex items-center gap-5 overflow-hidden">
+                    <div class="absolute inset-y-0 left-0 w-1 bg-[#044FA0] rounded-l-2xl"></div>
+                    <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-[#044FA0] text-white group-hover:scale-105 transition-transform shrink-0">
+                        <span class="material-symbols-rounded text-[30px]">add_circle</span>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-bold text-lg text-slate-900 group-hover:text-[#044FA0] transition-colors">Buat Laporan Baru</h3>
+                        <p class="text-sm text-slate-500 mt-1">Sampaikan keluhan, aspirasi, atau pertanyaan ke sekolah.</p>
+                    </div>
+                    <span class="material-symbols-rounded text-slate-300 group-hover:text-[#044FA0] transition-colors">chevron_right</span>
+                </a>
+
+                <!-- Menu Riwayat Laporan -->
+                <a href="{{ route('pengaduan.index') }}" class="group relative rounded-2xl border border-[#e4ebf5] bg-white p-6 shadow-sm hover:shadow-md transition-all sm:p-8 flex items-center gap-5 overflow-hidden">
+                    <div class="absolute inset-y-0 left-0 w-1 bg-amber-500 rounded-l-2xl"></div>
+                    <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-amber-500 text-white group-hover:scale-105 transition-transform shrink-0">
+                        <span class="material-symbols-rounded text-[30px]">history</span>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-bold text-lg text-slate-900 group-hover:text-amber-600 transition-colors">Riwayat Laporan</h3>
+                        <p class="text-sm text-slate-500 mt-1">Pantau status & proses seluruh laporan yang Anda kirim.</p>
+                    </div>
+                    <span class="material-symbols-rounded text-slate-300 group-hover:text-amber-500 transition-colors">chevron_right</span>
+                </a>
+            </div>
+            @endif
+
         </div>
     </main>
 </div>
