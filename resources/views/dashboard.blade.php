@@ -53,32 +53,43 @@
 
             <!-- Welcome Info Card (Left) -->
             <div class="md:col-span-2 space-y-6">
-                <div class="rounded-2xl border border-[#e4ebf5] bg-white p-6 shadow-[0_8px_30px_rgba(15,23,42,0.04)] sm:p-8">
+                <!-- Profile / Welcome Panel -->
+                <div class="rounded-3xl border border-slate-200/60 bg-white p-6 shadow-sm sm:p-8">
                     <div class="flex items-start sm:items-center gap-5 mb-8 flex-col sm:flex-row">
-                        <div class="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#e8f1fb] shrink-0 border border-[#b6d0ee]">
+                        <div class="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 shrink-0 border border-blue-200 shadow-inner">
                             <span class="material-symbols-rounded text-[36px] text-[#044FA0]">waving_hand</span>
                         </div>
                         <div>
-                            <h2 class="text-2xl font-bold text-slate-900 tracking-tight sm:text-3xl">Halo, {{ Auth::user()->nama }}!</h2>
-                            <p class="text-slate-500 text-sm mt-1.5 sm:text-base">Selamat datang di Dashboard Utama Pengaduan Siswa.</p>
+                            <h2 class="text-2xl font-extrabold text-slate-900 tracking-tight sm:text-3xl">Halo, {{ Auth::user()->nama }}!</h2>
+                            <p class="text-slate-500 text-sm mt-1.5 sm:text-base">Selamat datang di Dashboard Pengaduan Siswa.</p>
                         </div>
                     </div>
 
-                    <!-- Account Details -->
-                    <div class="rounded-xl bg-slate-50 p-5 border border-slate-100">
-                        <h3 class="text-sm font-bold text-slate-700 mb-4 flex items-center gap-2">
-                            <span class="material-symbols-rounded text-[20px] text-slate-400">badge</span>
-                            Informasi Akun Anda
-                        </h3>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div>
-                                <p class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Username</p>
-                                <p class="mt-1 font-bold text-slate-800">{{ Auth::user()->username }}</p>
-                            </div>
-                            <div>
-                                <p class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Role Akses</p>
-                                <p class="mt-1 font-bold text-slate-800 capitalize">{{ Auth::user()->role }}</p>
-                            </div>
+                    <!-- Statistics Grid -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+                        <!-- Total -->
+                        <div class="rounded-2xl bg-slate-50 border border-slate-100 p-4 text-center hover:bg-slate-100 transition-colors">
+                            <span class="material-symbols-rounded text-slate-400 mb-1">list_alt</span>
+                            <h4 class="text-2xl font-extrabold text-slate-800">{{ $total ?? 0 }}</h4>
+                            <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-1">Total</p>
+                        </div>
+                        <!-- Pending -->
+                        <div class="rounded-2xl border border-amber-200 bg-amber-50 p-4 text-center hover:bg-amber-100 transition-colors">
+                            <span class="material-symbols-rounded text-amber-500 mb-1">hourglass_empty</span>
+                            <h4 class="text-2xl font-extrabold text-amber-600">{{ $pending ?? 0 }}</h4>
+                            <p class="text-[10px] font-bold text-amber-600 uppercase tracking-widest mt-1">Menunggu</p>
+                        </div>
+                        <!-- Diproses -->
+                        <div class="rounded-2xl border border-blue-200 bg-blue-50 p-4 text-center hover:bg-blue-100 transition-colors">
+                            <span class="material-symbols-rounded text-[#044FA0] mb-1">sync</span>
+                            <h4 class="text-2xl font-extrabold text-[#044FA0]">{{ $diproses ?? 0 }}</h4>
+                            <p class="text-[10px] font-bold text-[#044FA0] uppercase tracking-widest mt-1">Diproses</p>
+                        </div>
+                        <!-- Selesai -->
+                        <div class="rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-center hover:bg-emerald-100 transition-colors">
+                            <span class="material-symbols-rounded text-emerald-500 mb-1">check_circle</span>
+                            <h4 class="text-2xl font-extrabold text-emerald-600">{{ $selesai ?? 0 }}</h4>
+                            <p class="text-[10px] font-bold text-emerald-600 uppercase tracking-widest mt-1">Selesai</p>
                         </div>
                     </div>
                 </div>
